@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>NIfTI Viewer</title>
+  <script src="https://unpkg.com/niivue@latest/dist/niivue.umd.js"></script>
+  <style>
+    body { margin: 0; }
+    canvas { width: 100vw; height: 100vh; display: block; }
+  </style>
+</head>
+<body>
+  <canvas id="gl"></canvas>
+  <script>
+    const nv = new niivue.Niivue();
+    nv.attachToCanvas(document.getElementById("gl"));
+    nv.loadVolumes([
+      { url: "data/bg_image.nii.gz", colormap: "gray" }
+    ]);
+    nv.setSliceType(nv.sliceTypeMultiplanar);
+  </script>
+</body>
+</html>
